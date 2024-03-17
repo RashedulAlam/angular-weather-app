@@ -12,7 +12,11 @@ export class WeatherService {
 
   getCurrentStat(lat: number, long: number): Observable<WeatherData> {
     return this.httpClient.get<WeatherData>(
-      `${environment.weatherAPIHostUrl}v1/forecast?latitude=${lat}&longitude=${long}&current=temperature_2m,wind_speed_10m&daily=sunrise&daily=sunset&timezone=Europe/Helsinki`
+      `${
+        environment.weatherAPIHostUrl
+      }v1/forecast?latitude=${lat}&longitude=${long}&current=temperature_2m,wind_speed_10m&daily=sunrise&daily=sunset&daily=temperature_2m_max&daily=temperature_2m_min&timezone=${
+        Intl.DateTimeFormat().resolvedOptions().timeZone
+      }`
     );
   }
 }

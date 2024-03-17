@@ -19,12 +19,6 @@ export class LocationService {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           if (position) {
-            console.log(
-              'Latitude: ' +
-                position.coords.latitude +
-                'Longitude: ' +
-                position.coords.longitude
-            );
             let lat: number = position.coords.latitude;
             let lng: number = position.coords.longitude;
 

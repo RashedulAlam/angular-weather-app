@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LocationService } from '../../services/LocationService';
 import { of, switchMap } from 'rxjs';
 import { WeatherService } from '../../services/weather.service';
-import { WeatherData } from '../../models/weather';
+import { ICurrent, WeatherData } from '../../models/weather';
 
 @Component({
   selector: 'app-weather-summary',
@@ -10,15 +10,12 @@ import { WeatherData } from '../../models/weather';
   styleUrl: './weather-summary.component.scss',
 })
 export class WeatherSummaryComponent implements OnInit {
-  currentTime = new Date().toLocaleString('en-US', {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-    hour12: false,
-  });
+  currentTime = new Date();
+
+  current: ICurrent | undefined;
+  sunriseAndSet: { sunrise?: Date; sunset?: Date } = {};
+  temparature: { max?: number; min?: number } = {};
+
   constructor(
     private locationService: LocationService,
     private weatherService: WeatherService
@@ -35,8 +32,23 @@ export class WeatherSummaryComponent implements OnInit {
       )
       .subscribe((data: WeatherData | null) => {
         if (data) {
-          console.log(data);
+          this.current = data.current;
+          this.setSunriseAndSunSet(data);
         }
+        console.log(data);
       });
+  }
+
+  private setSunriseAndSunSet(data: WeatherData): void {
+    if (data.daily) {
+      this.sunriseAndSet = {
+        sunrise: new Date(data.daily.sunrise[0]),
+        sunset: new Date(data.daily.sunset[0]),
+      };
+      this.temparature = {
+        max: Math.max(...data.daily.temperature_2m_max),
+        min: Math.min(...data.daily.temperature_2m_min),
+      };
+    }
   }
 }

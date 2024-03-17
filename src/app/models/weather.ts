@@ -1,3 +1,24 @@
+export interface ICurrent {
+  time: string;
+  interval: number;
+  temperature_2m: number;
+  wind_speed_10m: number;
+}
+
+export interface IHour {
+  time: string[];
+  temperature_2m: number[];
+  relative_humidity_2m: number[];
+  wind_speed_10m: number[];
+}
+
+export interface IHourUnit {
+  time: string;
+  temperature_2m: string;
+  relative_humidity_2m: string;
+  wind_speed_10m: string;
+}
+
 export interface WeatherData {
   latitude: number;
   longitude: number;
@@ -6,28 +27,14 @@ export interface WeatherData {
   timezone: string;
   timezone_abbreviation: string;
   elevation: number;
-  current_units?: {
-    time: string;
-    interval: string;
-    temperature_2m: string;
-    wind_speed_10m: string;
-  };
-  current?: {
-    time: string;
-    interval: number;
-    temperature_2m: number;
-    wind_speed_10m: number;
-  };
-  hourly_units?: {
-    time: string;
-    temperature_2m: string;
-    relative_humidity_2m: string;
-    wind_speed_10m: string;
-  };
-  hourly?: {
-    time: string[];
-    temperature_2m: number[];
-    relative_humidity_2m: number[];
-    wind_speed_10m: number[];
+  current_units?: ICurrent;
+  current?: ICurrent;
+  hourly_units?: IHourUnit;
+  hourly?: IHour;
+  daily?: {
+    sunrise: string[];
+    sunset: string[];
+    temperature_2m_max: number[];
+    temperature_2m_min: number[];
   };
 }
