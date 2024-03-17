@@ -28,6 +28,8 @@
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  display: flex;
 }
 
 h1 {
@@ -51,7 +53,7 @@ main {
   width: 100%;
   min-height: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   padding: 1rem;
   box-sizing: inherit;

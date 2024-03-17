@@ -7,6 +7,7 @@ import { SharedModule } from './shared/shared.module';
 import { WeatherSummaryComponent } from './components/weather-summary/weather-summary.component';
 import { WeatherForcastComponent } from './components/weather-forcast/weather-forcast.component';
 import { HourlyForcastComponent } from './components/hourly-forcast/hourly-forcast.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,7 @@ import { HourlyForcastComponent } from './components/hourly-forcast/hourly-forca
     WeatherForcastComponent,
     HourlyForcastComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, SharedModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, SharedModule],
   providers: [],
   bootstrap: [AppComponent],
 })
