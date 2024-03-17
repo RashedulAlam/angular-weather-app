@@ -10,6 +10,15 @@ import { WeatherData } from '../../models/weather';
   styleUrl: './weather-summary.component.scss',
 })
 export class WeatherSummaryComponent implements OnInit {
+  currentTime = new Date().toLocaleString('en-US', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false,
+  });
   constructor(
     private locationService: LocationService,
     private weatherService: WeatherService
