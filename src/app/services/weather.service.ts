@@ -14,7 +14,7 @@ export class WeatherService {
     return this.httpClient.get<WeatherData>(
       `${
         environment.weatherAPIHostUrl
-      }v1/forecast?latitude=${lat}&longitude=${long}&current=temperature_2m,wind_speed_10m&daily=sunrise&daily=sunset&daily=temperature_2m_max&daily=temperature_2m_min&timezone=${
+      }v1/forecast?latitude=${lat}&longitude=${long}&current=temperature_2m,precipitation,rain,cloud_cover,wind_speed_10m&daily=sunrise&daily=sunset&daily=temperature_2m_max&daily=temperature_2m_min&timezone=${
         Intl.DateTimeFormat().resolvedOptions().timeZone
       }`
     );
