@@ -1,35 +1,79 @@
-<div class="flex flex-col gap-2">
+<div class="flex flex-col gap-2 w-full max-w-screen-sm">
   <div class="flex flex-row items-center gap-4">
     <div class="text-6xl">
-      29°C
+      {{current?.temperature_2m}} <span class="text-base align-top">°C</span>
     </div>
     <div>
       <img src="assets/animated/cloudy-day-1.svg" alt="weather-image" />
     </div>
   </div>
   <div class="flex font-bold text-xl">
-    Turku, Finland
+    Your Location
   </div>
   <div class="flex flex-row">
     <div>
-      {{currentTime}}
+      {{currentTime | date:'medium' }}
     </div>
 
   </div>
   <div class="flex flex-row gap-4">
-    <div>
-      hightest
+    <div class="flex flex-row gap-2">
+      <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M4 18H2M6.31412 12.3141L4.8999 10.8999M17.6858 12.3141L19.1 10.8999M22 18H20M7 18C7 15.2386 9.23858 13 12 13C14.7614 13 17 15.2386 17 18M22 22H2M16 6L12 2M12 2L8 6M12 2V9"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      {{sunriseAndSet?.sunrise | date:'HH:mm:ss'}}
     </div>
-    <div>
-      lowest
+    <div class="flex flex-row gap-2">
+      <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M22 16.5H2M20 20H4M12 3V5M4 13H2M6.31412 7.31412L4.8999 5.8999M17.6855 7.31412L19.0998 5.8999M22 13H20M7 13C7 10.2386 9.23858 8 12 8C14.7614 8 17 10.2386 17 13"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      {{sunriseAndSet?.sunset | date:'HH:mm:ss'}}
     </div>
   </div>
   <div class="flex flex-row gap-4">
-    <div>
-      Sunrise
+    <div class="flex flex-row gap-2 items-center">
+      <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M2 12H12M9 4V20M3 9L6 12L3 15M12 6L9 9L6 6M6 18L9 15L10.5 16.5M20 14.5351V4C20 2.89543 19.1046 2 18 2C16.8954 2 16 2.89543 16 4V14.5351C14.8044 15.2267 14 16.5194 14 18C14 20.2091 15.7909 22 18 22C20.2091 22 22 20.2091 22 18C22 16.5194 21.1956 15.2267 20 14.5351Z"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <div>
+        {{temparature?.min}} <span class="text-base align-top">°C</span>
+      </div>
     </div>
-    <div>
-      Sunset
+    <div class="flex flex-row gap-2 items-center">
+      <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M12 9C11.1077 8.98562 10.2363 9.27003 9.52424 9.808C8.81222 10.346 8.30055 11.1066 8.07061 11.9688C7.84068 12.8311 7.90568 13.7455 8.25529 14.5665C8.6049 15.3876 9.21904 16.0682 10 16.5M12 3V5M6.6 18.4L5.2 19.8M4 13H2M6.6 7.6L5.2 6.2M20 14.5351V4C20 2.89543 19.1046 2 18 2C16.8954 2 16 2.89543 16 4V14.5351C14.8044 15.2267 14 16.5194 14 18C14 20.2091 15.7909 22 18 22C20.2091 22 22 20.2091 22 18C22 16.5194 21.1956 15.2267 20 14.5351Z"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <div>
+        {{temparature?.max}} <span class="text-base align-top">°C</span>
+      </div>
+    </div>
+  </div>
+  <div class="flex flex-row gap-4">
+    <div class="flex flex-row gap-2 items-center">
+      <svg  width="20px" height="20px"  viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 15.2422C21.206 14.435 22 13.0602 22 11.5C22 9.15643 20.2085 7.23129 17.9203 7.01937C17.4522 4.17213 14.9798 2 12 2C9.02024 2 6.54781 4.17213 6.07974 7.01937C3.79151 7.23129 2 9.15643 2 11.5C2 13.0602 2.79401 14.435 4 15.2422M8 18V20M8 12V14M16 18V20M16 12V14M12 20V22M12 14V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      <div>
+        Rain: 0
+      </div>
+    </div>
+    <div class="flex flex-row gap-2 items-center">
+      <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M21 18C21 18 19.8096 17.5305 19 17.3021C13.8797 15.8574 10.1203 20.1426 5 18.6979C4.19041 18.4695 3 18 3 18M21 12C21 12 19.8096 11.5305 19 11.3021C13.8797 9.85739 10.1203 14.1426 5 12.6979C4.19041 12.4695 3 12 3 12M21 6C21 6 19.8096 5.53048 19 5.30206C13.8797 3.85739 10.1203 8.14261 5 6.69794C4.19041 6.46952 3 6 3 6"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <div>
+        Wind: 0
+      </div>
     </div>
   </div>
 </div>
