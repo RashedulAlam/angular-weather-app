@@ -16,7 +16,7 @@ export class WeatherService {
         environment.weatherAPIHostUrl
       }v1/forecast?latitude=${lat}&longitude=${long}&current=temperature_2m,precipitation,rain,cloud_cover,wind_speed_10m,relative_humidity_2m,apparent_temperature,snowfall&daily=sunrise&daily=sunset&daily=temperature_2m_max&daily=temperature_2m_min&timezone=${
         Intl.DateTimeFormat().resolvedOptions().timeZone
-      }&forecast_days=5&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m`
+      }&forecast_days=5&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m,rain,snowfall`
     );
   }
 }

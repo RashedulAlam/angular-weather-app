@@ -1,13 +1,13 @@
-<div class="flex flex-col gap-2 w-full max-w-screen-sm">
-  <div class="flex flex-row items-center gap-4">
-    <div class="text-6xl">
-      {{current?.temperature_2m}} <span class="text-base align-top">°C</span>
-    </div>
+<div class="flex flex-col gap-4 w-full max-w-screen-sm">
+  <div class="flex flex-col items-center gap-4">
     <div>
       <img src="assets/animated/cloudy-day-1.svg" alt="weather-image" />
     </div>
+    <div class="text-6xl">
+      {{current?.temperature_2m}} <span class="text-base align-top">°C</span>
+    </div>
   </div>
-  <div class="flex font-bold text-xl">
+  <div class="flex font-bold text-xl mt-8">
     Your Location
   </div>
   <div class="flex flex-row">
@@ -16,7 +16,7 @@
     </div>
 
   </div>
-  <div class="flex flex-row gap-4">
+  <div class="flex flex-row gap-8 justify-between">
     <div class="flex flex-row gap-2">
       <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
@@ -34,7 +34,7 @@
       {{sunriseAndSet.sunset | date:'HH:mm:ss'}}
     </div>
   </div>
-  <div class="flex flex-row gap-4">
+  <div class="flex flex-row gap-8 justify-between">
     <div class="flex flex-row gap-2 items-center">
       <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
@@ -56,7 +56,7 @@
       </div>
     </div>
   </div>
-  <div class="flex flex-row gap-4">
+  <div class="flex flex-row gap-8 justify-between">
     <div class="flex flex-row gap-2 items-center">
       <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
@@ -78,7 +78,7 @@
       </div>
     </div>
   </div>
-  <div class="flex flex-row gap-4">
+  <div class="flex flex-row gap-8 justify-between">
     <div class="flex flex-row gap-2 items-center">
       <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
@@ -102,7 +102,7 @@
       </div>
     </div>
   </div>
-  <div class="flex flex-row gap-4">
+  <div class="flex flex-row gap-8 justify-between">
     <div class="flex flex-row gap-2 items-center">
       <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
