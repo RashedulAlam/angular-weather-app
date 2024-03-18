@@ -15,6 +15,7 @@ export class WeatherSummaryComponent implements OnInit {
   current: ICurrent | undefined;
   sunriseAndSet: { sunrise?: Date; sunset?: Date } = {};
   temparature: { max?: number; min?: number } = {};
+  rainAndWind: { rain?: number; wind?: number } = {};
 
   constructor(
     private locationService: LocationService,
@@ -34,6 +35,7 @@ export class WeatherSummaryComponent implements OnInit {
         if (data) {
           this.current = data.current;
           this.setSunriseAndSunSet(data);
+          this.setRainAndWind(data);
         }
         console.log(data);
       });
@@ -48,6 +50,15 @@ export class WeatherSummaryComponent implements OnInit {
       this.temparature = {
         max: Math.max(...data.daily.temperature_2m_max),
         min: Math.min(...data.daily.temperature_2m_min),
+      };
+    }
+  }
+
+  private setRainAndWind(data: WeatherData): void {
+    if (data.current) {
+      this.rainAndWind = {
+        wind: data.current.wind_speed_10m,
+        rain: data.current.rain,
       };
     }
   }

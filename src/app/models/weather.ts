@@ -3,6 +3,10 @@ export interface ICurrent {
   interval: number;
   temperature_2m: number;
   wind_speed_10m: number;
+  rain: number;
+  relative_humidity_2m: number;
+  snowfall: number;
+  apparent_temperature: number;
 }
 
 export interface IHour {
