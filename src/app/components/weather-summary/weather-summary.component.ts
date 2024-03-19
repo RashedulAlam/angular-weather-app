@@ -54,8 +54,8 @@ export class WeatherSummaryComponent implements OnInit {
         sunset: new Date(data.daily.sunset[0]),
       };
       this.temparature = {
-        max: Math.max(...data.daily.temperature_2m_max),
-        min: Math.min(...data.daily.temperature_2m_min),
+        max: data.daily.temperature_2m_max[0],
+        min: data.daily.temperature_2m_min[0]
       };
     }
   }
