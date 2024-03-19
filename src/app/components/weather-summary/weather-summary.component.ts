@@ -16,6 +16,7 @@ export class WeatherSummaryComponent implements OnInit {
   sunriseAndSet: { sunrise?: Date; sunset?: Date } = {};
   temparature: { max?: number; min?: number } = {};
   rainAndWind: { rain?: number; wind?: number } = {};
+  userLocation: string = 'Your Location';
 
   constructor(
     private locationService: LocationService,
@@ -39,6 +40,11 @@ export class WeatherSummaryComponent implements OnInit {
         }
         console.log(data);
       });
+    this.locationService.getLocationName().subscribe((location: string) => {
+      if (location) {
+        this.userLocation = location;
+      }
+    });
   }
 
   private setSunriseAndSunSet(data: WeatherData): void {
@@ -48,8 +54,8 @@ export class WeatherSummaryComponent implements OnInit {
         sunset: new Date(data.daily.sunset[0]),
       };
       this.temparature = {
-        max: Math.max(...data.daily.temperature_2m_max),
-        min: Math.min(...data.daily.temperature_2m_min),
+        max: data.daily.temperature_2m_max[0],
+        min: data.daily.temperature_2m_min[0]
       };
     }
   }

@@ -84,7 +84,7 @@ main {
   padding: 1rem;
   box-sizing: inherit;
   position: relative;
-  padding-bottom: 0px;
+  padding-bottom: 8px;
 }
 
 .angular-logo {
@@ -105,11 +105,4 @@ main {
 
 .content p {
   margin-top: 1.5rem;
-}
-
-@media screen and (max-width: 650px) {
-  .content {
-    flex-direction: column;
-    width: max-content;
-  }
 }
