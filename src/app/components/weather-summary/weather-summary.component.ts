@@ -16,6 +16,7 @@ export class WeatherSummaryComponent implements OnInit {
   sunriseAndSet: { sunrise?: Date; sunset?: Date } = {};
   temparature: { max?: number; min?: number } = {};
   rainAndWind: { rain?: number; wind?: number } = {};
+  userLocation: string = 'Your Location';
 
   constructor(
     private locationService: LocationService,
@@ -39,6 +40,11 @@ export class WeatherSummaryComponent implements OnInit {
         }
         console.log(data);
       });
+    this.locationService.getLocationName().subscribe((location: string) => {
+      if (location) {
+        this.userLocation = location;
+      }
+    });
   }
 
   private setSunriseAndSunSet(data: WeatherData): void {

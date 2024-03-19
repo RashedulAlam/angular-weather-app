@@ -1,5 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable, of, switchMap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,7 @@ export class LocationService {
     lng: number;
   } | null>(null);
 
-  constructor() {
+  constructor(private httpclient: HttpClient) {
     this.init();
   }
 
@@ -36,5 +37,19 @@ export class LocationService {
 
   getLocation(): Observable<{ lat: number; lng: number } | null> {
     return this.userLocation.asObservable();
+  }
+
+  getLocationName(): Observable<string> {
+    return this.getLocation().pipe(
+      switchMap((value) =>
+        value
+          ? this.httpclient
+              .get<{ results: any }>(
+                `https://maps.googleapis.com/maps/api/geocode/json?latlng=${value.lat},${value.lng}&key=AIzaSyB3slK3y99Obkm5M-1R8WZ5HYtU4VrFpXM`
+              )
+              .pipe(map(({ results }) => results[0].formatted_address))
+          : of('Your Location')
+      )
+    );
   }
 }
