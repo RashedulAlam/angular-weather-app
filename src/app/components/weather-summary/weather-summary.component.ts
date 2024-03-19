@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { LocationService } from '../../services/LocationService';
-import { of, switchMap } from 'rxjs';
-import { WeatherService } from '../../services/weather.service';
 import { ICurrent, WeatherData } from '../../models/weather';
 
 @Component({
@@ -10,6 +8,8 @@ import { ICurrent, WeatherData } from '../../models/weather';
   styleUrl: './weather-summary.component.scss',
 })
 export class WeatherSummaryComponent implements OnInit {
+  @Input() weatherData?: WeatherData;
+
   currentTime = new Date();
 
   current: ICurrent | undefined;
@@ -18,28 +18,15 @@ export class WeatherSummaryComponent implements OnInit {
   rainAndWind: { rain?: number; wind?: number } = {};
   userLocation: string = 'Your Location';
 
-  constructor(
-    private locationService: LocationService,
-    private weatherService: WeatherService
-  ) {}
+  constructor(private locationService: LocationService) {}
+
   ngOnInit(): void {
-    this.locationService
-      .getLocation()
-      .pipe(
-        switchMap((location) =>
-          location
-            ? this.weatherService.getCurrentStat(location.lat, location.lng)
-            : of(null)
-        )
-      )
-      .subscribe((data: WeatherData | null) => {
-        if (data) {
-          this.current = data.current;
-          this.setSunriseAndSunSet(data);
-          this.setRainAndWind(data);
-        }
-        console.log(data);
-      });
+    if (this.weatherData) {
+      this.current = this.weatherData.current;
+      this.setSunriseAndSunSet(this.weatherData);
+      this.setRainAndWind(this.weatherData);
+    }
+
     this.locationService.getLocationName().subscribe((location: string) => {
       if (location) {
         this.userLocation = location;

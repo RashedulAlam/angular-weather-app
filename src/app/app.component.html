@@ -1,12 +1,10 @@
 <main class="main flex-col ">
   <div class="content w-full flex-col lg:flex-row h-full gap-8">
-    <app-weather-summary></app-weather-summary>
-    <div class="flex flex-col gap-8">
-      <app-hourly-forcast></app-hourly-forcast>
-      <app-weather-forcast></app-weather-forcast>
+    <app-weather-summary [weatherData]="weatherData" *ngIf="weatherData"></app-weather-summary>
+    <div class="flex flex-col justify-between" *ngIf="weatherData">
+      <app-hourly-forcast [weatherData]="weatherData"></app-hourly-forcast>
+      <app-weather-forcast [weatherData]="weatherData"></app-weather-forcast>
     </div>
   </div>
   <app-social class="w-full"></app-social>
 </main>
-
-<router-outlet />
