@@ -55,7 +55,7 @@ export class WeatherSummaryComponent implements OnInit {
       };
       this.temparature = {
         max: data.daily.temperature_2m_max[0],
-        min: data.daily.temperature_2m_min[0]
+        min: data.daily.temperature_2m_min[0],
       };
     }
   }

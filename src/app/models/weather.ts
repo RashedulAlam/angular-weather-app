@@ -7,6 +7,8 @@ export interface ICurrent {
   relative_humidity_2m: number;
   snowfall: number;
   apparent_temperature: number;
+  precipitation: number;
+  cloud_cover: number;
 }
 
 export interface IHour {
@@ -41,4 +43,11 @@ export interface WeatherData {
     temperature_2m_max: number[];
     temperature_2m_min: number[];
   };
+}
+
+export enum WeatherType {
+  SUNNY = 'sunny',
+  CLOUDY = 'cloudy',
+  SNOW = 'snow',
+  RAINY = 'rainy',
 }
