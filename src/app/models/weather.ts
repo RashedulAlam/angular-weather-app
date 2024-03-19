@@ -1,19 +1,26 @@
 export interface ICurrent {
   time: string;
-  interval: number;
+  interval?: number;
   temperature_2m: number;
   wind_speed_10m: number;
   rain: number;
   relative_humidity_2m: number;
   snowfall: number;
   apparent_temperature: number;
+  precipitation: number;
+  cloud_cover: number;
 }
 
 export interface IHour {
   time: string[];
   temperature_2m: number[];
-  relative_humidity_2m: number[];
   wind_speed_10m: number[];
+  rain: number[];
+  relative_humidity_2m: number[];
+  snowfall: number[];
+  apparent_temperature: number[];
+  precipitation: number[];
+  cloud_cover: number[];
 }
 
 export interface IHourUnit {
@@ -34,11 +41,18 @@ export interface WeatherData {
   current_units?: ICurrent;
   current?: ICurrent;
   hourly_units?: IHourUnit;
-  hourly?: IHour;
+  hourly: IHour;
   daily?: {
     sunrise: string[];
     sunset: string[];
     temperature_2m_max: number[];
     temperature_2m_min: number[];
   };
+}
+
+export enum WeatherType {
+  SUNNY = 'sunny',
+  CLOUDY = 'cloudy',
+  SNOW = 'snow',
+  RAINY = 'rainy',
 }
