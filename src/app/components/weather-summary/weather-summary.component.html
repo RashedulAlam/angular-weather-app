@@ -1,13 +1,13 @@
-<div class="flex flex-col gap-2 w-full max-w-screen-sm">
-  <div class="flex flex-row items-center gap-4">
-    <div class="text-6xl">
-      {{current?.temperature_2m}} <span class="text-base align-top">°C</span>
-    </div>
+<div class="flex flex-col gap-4 w-full max-w-screen-sm">
+  <div class="flex flex-col items-center gap-4">
     <div>
       <img src="assets/animated/cloudy-day-1.svg" alt="weather-image" />
     </div>
+    <div class="text-6xl">
+      {{current?.temperature_2m}} <span class="text-base align-top">°C</span>
+    </div>
   </div>
-  <div class="flex font-bold text-xl">
+  <div class="flex font-bold text-xl mt-8">
     Your Location
   </div>
   <div class="flex flex-row">
@@ -16,14 +16,14 @@
     </div>
 
   </div>
-  <div class="flex flex-row gap-4">
+  <div class="flex flex-row gap-8 justify-between">
     <div class="flex flex-row gap-2">
       <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
           d="M4 18H2M6.31412 12.3141L4.8999 10.8999M17.6858 12.3141L19.1 10.8999M22 18H20M7 18C7 15.2386 9.23858 13 12 13C14.7614 13 17 15.2386 17 18M22 22H2M16 6L12 2M12 2L8 6M12 2V9"
           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
       </svg>
-      {{sunriseAndSet?.sunrise | date:'HH:mm:ss'}}
+      {{sunriseAndSet.sunrise | date:'HH:mm:ss'}}
     </div>
     <div class="flex flex-row gap-2">
       <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -31,10 +31,10 @@
           d="M22 16.5H2M20 20H4M12 3V5M4 13H2M6.31412 7.31412L4.8999 5.8999M17.6855 7.31412L19.0998 5.8999M22 13H20M7 13C7 10.2386 9.23858 8 12 8C14.7614 8 17 10.2386 17 13"
           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
       </svg>
-      {{sunriseAndSet?.sunset | date:'HH:mm:ss'}}
+      {{sunriseAndSet.sunset | date:'HH:mm:ss'}}
     </div>
   </div>
-  <div class="flex flex-row gap-4">
+  <div class="flex flex-row gap-8 justify-between">
     <div class="flex flex-row gap-2 items-center">
       <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
@@ -42,7 +42,7 @@
           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
       </svg>
       <div>
-        {{temparature?.min}} <span class="text-base align-top">°C</span>
+        {{temparature.min}} <span class="text-base align-top">°C</span>
       </div>
     </div>
     <div class="flex flex-row gap-2 items-center">
@@ -52,17 +52,19 @@
           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
       </svg>
       <div>
-        {{temparature?.max}} <span class="text-base align-top">°C</span>
+        {{temparature.max}} <span class="text-base align-top">°C</span>
       </div>
     </div>
   </div>
-  <div class="flex flex-row gap-4">
+  <div class="flex flex-row gap-8 justify-between">
     <div class="flex flex-row gap-2 items-center">
-      <svg  width="20px" height="20px"  viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20 15.2422C21.206 14.435 22 13.0602 22 11.5C22 9.15643 20.2085 7.23129 17.9203 7.01937C17.4522 4.17213 14.9798 2 12 2C9.02024 2 6.54781 4.17213 6.07974 7.01937C3.79151 7.23129 2 9.15643 2 11.5C2 13.0602 2.79401 14.435 4 15.2422M8 18V20M8 12V14M16 18V20M16 12V14M12 20V22M12 14V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+      <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M20 15.2422C21.206 14.435 22 13.0602 22 11.5C22 9.15643 20.2085 7.23129 17.9203 7.01937C17.4522 4.17213 14.9798 2 12 2C9.02024 2 6.54781 4.17213 6.07974 7.01937C3.79151 7.23129 2 9.15643 2 11.5C2 13.0602 2.79401 14.435 4 15.2422M8 18V20M8 12V14M16 18V20M16 12V14M12 20V22M12 14V16"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
       <div>
-        Rain: 0
+        {{rainAndWind.rain}} mm
       </div>
     </div>
     <div class="flex flex-row gap-2 items-center">
@@ -72,7 +74,46 @@
           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
       </svg>
       <div>
-        Wind: 0
+        {{rainAndWind.wind}} km/h
+      </div>
+    </div>
+  </div>
+  <div class="flex flex-row gap-8 justify-between">
+    <div class="flex flex-row gap-2 items-center">
+      <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M12 8V16M12 8V2M12 8L7 3M12 8L17 3M12 16V22M12 16L7 21M12 16L17 21M16 12H8M16 12H22M16 12L21 7M16 12L21 17M8 12H2M8 12L3 7M8 12L3 17"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <div>
+        {{current?.snowfall}} cm
+      </div>
+    </div>
+    <div class="flex flex-row gap-2 items-center">
+      <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M22 16C22 19.3137 19.3137 22 16 22C12.6863 22 10 19.3137 10 16C10 11.6863 16 2 16 2C16 2 22 11.6863 22 16Z"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M8 9C8 10.6569 6.65685 12 5 12C3.34315 12 2 10.6569 2 9C2 6.84315 5 2 5 2C5 2 8 6.84315 8 9Z"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <div>
+        {{current?.relative_humidity_2m}} %
+      </div>
+    </div>
+  </div>
+  <div class="flex flex-row gap-8 justify-between">
+    <div class="flex flex-row gap-2 items-center">
+      <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M14.5 4.5C14.5 3.11929 13.3807 2 12 2C10.6193 2 9.5 3.11929 9.5 4.5V13.7578C8.29401 14.565 7.5 15.9398 7.5 17.5C7.5 19.9853 9.51472 22 12 22C14.4853 22 16.5 19.9853 16.5 17.5C16.5 15.9398 15.706 14.565 14.5 13.7578V4.5Z"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <path
+          d="M12 18.5C12.5523 18.5 13 18.0523 13 17.5C13 16.9477 12.5523 16.5 12 16.5C11.4477 16.5 11 16.9477 11 17.5C11 18.0523 11.4477 18.5 12 18.5Z"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <div>
+        Feels like: {{current?.apparent_temperature}} °C
       </div>
     </div>
   </div>
