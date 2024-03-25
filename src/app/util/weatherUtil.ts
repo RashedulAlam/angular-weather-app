@@ -19,16 +19,16 @@ export const getWeatherType = (current: ICurrent): WeatherType => {
   }
 };
 
-export const getHourlyData = (hourlyData: IHour): any[] => {
+export const getHourlyData = (hourlyData: IHour, slicedIndex = 24): any[] => {
   const result: any[] = [];
 
-  for (let i = 0; i < hourlyData.time.length; i += 24) {
-    const times = hourlyData.time.slice(i, i + 24);
-    const temperature_2ms = hourlyData.temperature_2m.slice(i, i + 24);
-    const precipitations = hourlyData.precipitation.slice(i, i + 24);
-    const rains = hourlyData.rain.slice(i, i + 24);
-    const cloud_covers = hourlyData.cloud_cover.slice(i, i + 24);
-    const snowfalls = hourlyData.snowfall.slice(i, i + 24);
+  for (let i = 0; i < hourlyData.time.length; i += slicedIndex) {
+    const times = hourlyData.time.slice(i, i + slicedIndex);
+    const temperature_2ms = hourlyData.temperature_2m.slice(i, i + slicedIndex);
+    const precipitations = hourlyData.precipitation.slice(i, i + slicedIndex);
+    const rains = hourlyData.rain.slice(i, i + slicedIndex);
+    const cloud_covers = hourlyData.cloud_cover.slice(i, i + slicedIndex);
+    const snowfalls = hourlyData.snowfall.slice(i, i + slicedIndex);
 
     const series: Partial<ICurrent>[] = times.map((time, index) => {
       return {
